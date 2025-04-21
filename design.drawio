@@ -1,0 +1,97 @@
+<mxfile host="app.diagrams.net" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/135.0.0.0 Safari/537.36" version="26.2.9">
+  <diagram name="Page-1" id="snGhMjBGcywSb9xShL2_">
+    <mxGraphModel dx="816" dy="524" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-1" value="&lt;font style=&quot;font-size: 20px;&quot; face=&quot;Times New Roman&quot;&gt;App(OpenSSL)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="130" y="110" width="150" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-2" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="360" as="sourcePoint" />
+            <mxPoint x="480" y="145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-5" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-1" target="8GZYR64Pc0M1Kak9sJkA-4">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="280" y="145" as="sourcePoint" />
+            <mxPoint x="450" y="145" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-4" value="Userspace TLS Handshake" style="text;html=1;align=center;verticalAlign=middle;whiteSpace=wrap;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="330" y="130" width="110" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-6" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 20px;&quot;&gt;KTLS Setup(setsockopt)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="480" y="110" width="200" height="65" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-7" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-6">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="360" as="sourcePoint" />
+            <mxPoint x="580" y="320" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-8" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 20px;&quot;&gt;KTLS Socket(sendfile)&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="487.5" y="320" width="185" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-9" value="" style="endArrow=classic;html=1;rounded=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-8" target="8GZYR64Pc0M1Kak9sJkA-10">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="360" as="sourcePoint" />
+            <mxPoint x="580" y="480" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-10" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 20px;&quot;&gt;Kernel or HW Offload&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="525" y="450" width="110" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-11" value="" style="endArrow=classic;html=1;rounded=0;exitX=0;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-10" target="8GZYR64Pc0M1Kak9sJkA-12">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="390" y="360" as="sourcePoint" />
+            <mxPoint x="360" y="490" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-12" value="&lt;font face=&quot;Times New Roman&quot; style=&quot;font-size: 20px;&quot;&gt;Mellanox NIC&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="300" y="460" width="120" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-13" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Initialize OpenSSL and Set Up SSL Context&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="40" y="730" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-14" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-13" target="8GZYR64Pc0M1Kak9sJkA-15">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="340" y="700" as="sourcePoint" />
+            <mxPoint x="280" y="765" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-15" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Create and Configure the KTLS Socket&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="260" y="730" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-16" value="" style="endArrow=classic;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-15" target="8GZYR64Pc0M1Kak9sJkA-17">
+          <mxGeometry width="50" height="50" relative="1" as="geometry">
+            <mxPoint x="410" y="800" as="sourcePoint" />
+            <mxPoint x="480" y="765" as="targetPoint" />
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-19" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-17" target="8GZYR64Pc0M1Kak9sJkA-18">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-17" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Perform Userspace Handshake with OpenSSL&lt;/font&gt;" style="rounded=0;whiteSpace=wrap;html=1;" vertex="1" parent="1">
+          <mxGeometry x="470" y="730" width="130" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-21" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-18" target="8GZYR64Pc0M1Kak9sJkA-20">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-18" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Enable KTLS on the Socket&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="476.25" y="850" width="117.5" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-23" value="" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" edge="1" parent="1" source="8GZYR64Pc0M1Kak9sJkA-20" target="8GZYR64Pc0M1Kak9sJkA-22">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-20" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Transfer file&amp;nbsp; &amp;nbsp;&lt;/font&gt;&lt;span style=&quot;font-size: 15px; font-family: &amp;quot;Times New Roman&amp;quot;; background-color: transparent; color: light-dark(rgb(0, 0, 0), rgb(255, 255, 255));&quot;&gt;sendfile()&lt;/span&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="270" y="850" width="120" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="8GZYR64Pc0M1Kak9sJkA-22" value="&lt;font style=&quot;font-size: 15px;&quot; face=&quot;Times New Roman&quot;&gt;Cleanup and Shutdown&lt;/font&gt;" style="whiteSpace=wrap;html=1;rounded=0;" vertex="1" parent="1">
+          <mxGeometry x="70" y="850" width="120" height="70" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
