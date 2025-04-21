@@ -21,33 +21,9 @@
 #define FILE_OUT "receivedFile.txt"
 #define SERVER_ADDRESS "127.0.0.1"
 
-// void setup_tls_rx(int sockfd) {
-//     struct tls12_crypto_info_aes_gcm_128 crypto;
-//     memset(&crypto, 0, sizeof(crypto));
-
-//     crypto.info.version = TLS_1_2_VERSION;
-//     crypto.info.cipher_type = TLS_CIPHER_AES_GCM_128;
-
-//     memset(crypto.iv, 1, TLS_CIPHER_AES_GCM_128_IV_SIZE);
-//     memset(crypto.key, 2, TLS_CIPHER_AES_GCM_128_KEY_SIZE);
-//     memset(crypto.salt, 3, TLS_CIPHER_AES_GCM_128_SALT_SIZE);
-//     memset(crypto.rec_seq, 4, TLS_CIPHER_AES_GCM_128_REC_SEQ_SIZE);
-
-//     if (setsockopt(sockfd, SOL_TLS, TLS_RX, &crypto, sizeof(crypto)) < 0) {
-//         perror("setsockopt TLS_RX");
-//         exit(EXIT_FAILURE);
-//     }
-
-//     printf("KTLS TLS_RX configured manually\n");
-// }
-
-
 void setup_tls_rx(int sockfd, SSL *ssl) {
     unsigned char key[32];  // AES-GCM key length
     unsigned char iv[12];   // AES-GCM IV length
-
-    // const SSL_CIPHER *cipher = SSL_get_current_cipher(ssl);
-    // printf("Using cipher: %s\n", SSL_CIPHER_get_name(cipher));
 
     // Extract the keying material from the SSL session
     if (SSL_export_keying_material(ssl, key, sizeof(key), NULL, 0, NULL, 0, 0) <= 0) {
@@ -56,8 +32,8 @@ void setup_tls_rx(int sockfd, SSL *ssl) {
         exit(EXIT_FAILURE);
     }
 
-    // Initialize IV (this should come from session state or handshake info)
-    memset(iv, 1, sizeof(iv));  // Example IV, make sure to properly derive it
+    // Initialize IV 
+    memset(iv, 1, sizeof(iv)); 
 
     struct tls12_crypto_info_aes_gcm_128 crypto;
     memset(&crypto, 0, sizeof(crypto));
@@ -71,8 +47,6 @@ void setup_tls_rx(int sockfd, SSL *ssl) {
     memset(crypto.salt, 3, TLS_CIPHER_AES_GCM_128_SALT_SIZE);  // Optional
     memset(crypto.rec_seq, 4, TLS_CIPHER_AES_GCM_128_REC_SEQ_SIZE);  // Optional
 
-    // print_crypto_info(&crypto);
-
     // Set the decryption configuration for RX (receive direction)
     if (setsockopt(sockfd, SOL_TLS, TLS_RX, &crypto, sizeof(crypto)) < 0) {
         perror("setsockopt TLS_RX failed");
@@ -81,34 +55,6 @@ void setup_tls_rx(int sockfd, SSL *ssl) {
 
     printf("KTLS TLS_RX configured with OpenSSL-derived keys\n");
 }
-
-void print_crypto_info(struct tls12_crypto_info_aes_gcm_128 *c) {
-    printf("KTLS Crypto Info:\n");
-    printf("  Key: ");
-    for (int i = 0; i < TLS_CIPHER_AES_GCM_128_KEY_SIZE; i++) printf("%02x", c->key[i]);
-    printf("\n  IV: ");
-    for (int i = 0; i < TLS_CIPHER_AES_GCM_128_IV_SIZE; i++) printf("%02x", c->iv[i]);
-    printf("\n  Salt: ");
-    for (int i = 0; i < TLS_CIPHER_AES_GCM_128_SALT_SIZE; i++) printf("%02x", c->salt[i]);
-    printf("\n  Rec Seq: ");
-    for (int i = 0; i < TLS_CIPHER_AES_GCM_128_REC_SEQ_SIZE; i++) printf("%02x", c->rec_seq[i]);
-    printf("\n");
-}
-
-uint64_t htonll(uint64_t val) {
-    static const int num = 1;
-    if (*(const char *)&num == 1) {
-        return ((uint64_t)htonl(val & 0xFFFFFFFF) << 32) | htonl(val >> 32);
-    } else {
-        return val;
-    }
-}
-
-uint64_t ntohll(uint64_t val) {
-    return htonll(val);  // Same logic as htonll
-}
-
-
 
 int main() {
     SSL_library_init();
@@ -191,7 +137,6 @@ int main() {
 
     clock_gettime(CLOCK_MONOTONIC, &end);
 
-    // double elapsed = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
     double elapsed_ms = (end.tv_sec - start.tv_sec) * 1000.0 + (end.tv_nsec - start.tv_nsec) / 1e6;
     double mb = file_size / (1024.0 * 1024.0);
 
@@ -201,8 +146,6 @@ int main() {
     printf("Throughput: %.2f MB/s\n", mb / (elapsed_ms / 1000.0)); 
 
     close(out_fd);
-
-
     SSL_shutdown(ssl);
     SSL_free(ssl);
     close(sockfd);

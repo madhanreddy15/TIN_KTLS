@@ -98,7 +98,6 @@ int main() {
         } else {
             clock_gettime(CLOCK_MONOTONIC, &end);
 
-            // double elapsed = (end.tv_sec - start.tv_sec) + (end.tv_nsec - start.tv_nsec) / 1e9;
             double elapsed_ms = (end.tv_sec - start.tv_sec) * 1000.0 + (end.tv_nsec - start.tv_nsec) / 1e6;
             double mb = sent / (1024.0 * 1024.0);
 
