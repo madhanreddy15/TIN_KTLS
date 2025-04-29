@@ -1,8 +1,4 @@
-Here's a polished and professional `README.md` for your GitHub repository based on the provided content. This version is organized, GitHub-friendly, and follows best practices for open-source documentation:
-
----
-
-# TIN Blog: Offloading TLS with Kernel TLS (kTLS) and OpenSSL
+### Offloading TLS with Kernel TLS (kTLS) and OpenSSL
 
 ## 🌐 Introduction
 
